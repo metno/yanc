@@ -1,0 +1,204 @@
+variables:
+- '% missing': 0
+  max: 1495951200.0
+  mean: 1495832400.0
+  min: 1495713600.0
+  name: time
+  unit: seconds since 1970-01-01 00:00:00 +00:00
+- '% missing': 0
+  max: 1495713600.0
+  mean: 1495713600.0
+  min: 1495713600.0
+  name: forecast_reference_time
+  unit: seconds since 1970-01-01 00:00:00 +00:00
+- '% missing': 0
+  max: 0.0
+  mean: 0.0
+  min: 0.0
+  name: height_above_msl
+  unit: m
+- '% missing': 0
+  max: 0.0
+  mean: 0.0
+  min: 0.0
+  name: height0
+  unit: m
+- '% missing': 0
+  max: 2.0
+  mean: 2.0
+  min: 2.0
+  name: height1
+  unit: m
+- '% missing': 0
+  max: 0.0
+  mean: 0.0
+  min: 0.0
+  name: projection_lambert
+- '% missing': 0
+  max: 897557.8125
+  mean: 57.85813522338867
+  min: -897442.1875
+  name: x
+  unit: m
+- '% missing': 0
+  max: 1215678.25
+  mean: 55678.140625
+  min: -1104321.75
+  name: y
+  unit: m
+- '% missing': 0
+  max: 41.764287001997324
+  mean: 15.00118321711856
+  min: -11.76122372609243
+  name: longitude
+  unit: degree_east
+- '% missing': 0
+  max: 73.8591696480729
+  mean: 63.10720129960388
+  min: 52.302515273202346
+  name: latitude
+  unit: degree_north
+- '% missing': 0
+  max: 103039.1875
+  mean: 100457.953125
+  min: 79342.0625
+  name: surface_air_pressure
+  unit: Pa
+- '% missing': 0
+  max: 1.0000076293945312
+  mean: 0.7799519300460815
+  min: 0.18196380138397217
+  name: relative_humidity_2m
+  unit: '1'
+- '% missing': 0
+  max: 102639.3125
+  mean: 101771.9609375
+  min: 100072.375
+  name: air_pressure_at_sea_level
+  unit: Pa
+- '% missing': 0
+  max: 87.05428314208984
+  mean: 1.6699273586273193
+  min: 0.0
+  name: precipitation_amount_acc
+  unit: kg/m^2
+- '% missing': 0
+  max: 1.0
+  mean: 0.06405501812696457
+  min: 0.0
+  name: fog_area_fraction
+  unit: '1'
+- '% missing': 0
+  max: 1.0
+  mean: 0.4224424660205841
+  min: 0.0
+  name: land_area_fraction
+  unit: '1'
+- '% missing': 0
+  max: 37.05814743041992
+  mean: 0.05785857141017914
+  min: 0.0
+  name: precipitation_amount
+  unit: kg/m^2
+- '% missing': 0
+  max: 19.23712921142578
+  mean: 0.07756848633289337
+  min: 0.0
+  name: precipitation_amount_high_estimate
+  unit: kg/m^2
+- '% missing': 0
+  max: 6.2558441162109375
+  mean: 0.03397724777460098
+  min: 0.0
+  name: precipitation_amount_low_estimate
+  unit: kg/m^2
+- '% missing': 0
+  max: 10.348426818847656
+  mean: 0.04952885955572128
+  min: 0.0
+  name: precipitation_amount_middle_estimate
+  unit: kg/m^2
+- '% missing': 0
+  max: 1.0
+  mean: 0.08146212249994278
+  min: 0.0
+  name: precipitation_amount_prob_low
+  unit: '1'
+- '% missing': 0
+  max: 100.0
+  mean: 57.41276550292969
+  min: 0.0
+  name: cloud_area_fraction
+  unit: '%'
+- '% missing': 0
+  max: 100.0
+  mean: 28.713945388793945
+  min: 0.0
+  name: high_type_cloud_area_fraction
+  unit: '%'
+- '% missing': 0
+  max: 100.0
+  mean: 42.1991081237793
+  min: 0.0
+  name: low_type_cloud_area_fraction
+  unit: '%'
+- '% missing': 0
+  max: 100.0
+  mean: 18.732574462890625
+  min: 0.0
+  name: medium_type_cloud_area_fraction
+  unit: '%'
+- '% missing': 0
+  max: 1.0
+  mean: 0.19915199279785156
+  min: 0.0
+  name: helicopter_triggered_index
+  unit: '1'
+- '% missing': 0
+  max: 0.7097482681274414
+  mean: 0.0026676903944462538
+  min: 2.0759183883001242e-07
+  name: thunderstorm_index_combined
+  unit: '1'
+- '% missing': 0
+  max: 25.862478256225586
+  mean: 6.0274658203125
+  min: 0.27492719888687134
+  name: wind_speed_maxarea_10m
+  unit: m/s
+- '% missing': 0
+  max: 36.24311828613281
+  mean: 6.866528034210205
+  min: 0.05917349085211754
+  name: wind_speed_of_gust
+  unit: m/s
+- '% missing': 0
+  max: 20.81399917602539
+  mean: 0.027719348669052124
+  min: -19.105514526367188
+  name: x_wind_10m
+  unit: m/s
+- '% missing': 0
+  max: 25.200000762939453
+  mean: -0.4232128858566284
+  min: -18.85898208618164
+  name: y_wind_10m
+  unit: m/s
+- '% missing': 0
+  max: 303.5087890625
+  mean: 280.8661804199219
+  min: 254.81321716308594
+  name: air_temperature_2m
+  unit: K
+- '% missing': 0
+  max: 2032.338134765625
+  mean: 109.50570678710938
+  min: -4.055070877075195
+  name: altitude
+  unit: m
+- '% missing': 0
+  max: 1013.25
+  mean: 1013.25
+  min: 1013.25
+  name: p0
+  unit: hPa
