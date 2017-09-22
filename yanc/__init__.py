@@ -24,7 +24,7 @@ def check_nc_file_against_template(ncfile, template):
 
     return OK
 
-if __name__ == "__main__":
+def main():
 
     helptext = "Check a NetCDF file against a template specifying variables and their properties."
     parser = argparse.ArgumentParser(prog="yanc", description=helptext)
@@ -34,3 +34,6 @@ if __name__ == "__main__":
 
     return_code = check_nc_file_against_template(args.ncfile, args.template)
     sys.exit(return_code)
+
+if __name__ == "__main__":
+    main()
