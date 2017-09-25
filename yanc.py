@@ -121,6 +121,7 @@ def run(args):
     parser.add_argument('--ncfile', required=True, help='Name of the input NetCDF file.')
     parser.add_argument('--template', required=True, help="Name of the file with parametrized checks.")
     parser.add_argument('--debug', help="Show debug information", action="store_true")
+    parser.add_argument('--version', action="version", version="%(prog)s 0.1.0")
     args = parser.parse_args(args)
 
     return_code = check_nc_file_against_template(args.ncfile, args.template, args.debug)
