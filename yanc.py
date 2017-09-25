@@ -94,7 +94,7 @@ def check_nc_file_against_template(ncfile, template, debug):
                 val = np.mean(np.isnan(values)) * 100
 
             if val > allowed_missing_percent:
-                print("Missing values ({}%) for '{}' is higher than {}%".format(val, name, variable['% missing']))
+                print("Missing values ({}%) for '{}' is higher than {}%".format(val, name, allowed_missing_percent))
                 return NOT_OK
 
             """
