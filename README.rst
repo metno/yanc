@@ -20,7 +20,7 @@ The template file understands the following keywords:
      min: 200
      max: 400
      units: K
-     '% missing': 0
+     '% missing': 10
      missing_timesteps: [0,1,2]
 
 Dimensions can be checked for an exact length (by using the work 'length') or a range of
@@ -31,7 +31,8 @@ Neither 'dimensions' nor 'variables' are required to be present in the file.
 Missing values
 --------------
 
-If '% missing' is used for a variable, the test will fail if there the percentage of missing values
+By default, variables are not allowed to have missing values. To allow a missing values, the '%
+missing' can be added, which means the test will fail if there the percentage of missing values
 exceeds the allowed value. Some variables (such as precipitation_amount) will have have missing
 values on the first timestep. Data in timesteps specified by missing_timesteps will not count
 towards the percentage missing.

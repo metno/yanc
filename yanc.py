@@ -64,31 +64,46 @@ def check_nc_file_against_template(ncfile, template, debug):
                 return NOT_OK
 
             """
-            Check variable values
+            Check missing values
+
+            For non-scalar values, ignore timesteps in 'missing_timesteps'
             """
             values = dataset.variables[name]
+
+            # Percent missing values
+            allowed_missing_percent = 0  # Default value
             if '% missing' in variable:
-                missing_timesteps = []
-                # Variables that are not scalars
-                if len(values.shape) > 0:
-                    timesteps = range(values.shape[0])
-                    if "missing_timesteps" in variable:
-                        allowed_missing_timesteps = variable["missing_timesteps"]
-                        if not isinstance(allowed_missing_timesteps, (list, tuple)):
-                            allowed_missing_timesteps = [allowed_missing_timesteps]
-                        timesteps = [t for t in timesteps if t not in allowed_missing_timesteps]
-                    val = np.mean(np.isnan(values[timesteps, ...])) * 100
-                # Scalar variables
-                else:
-                    val = np.mean(np.isnan(values)) * 100
-                if variable['% missing'] < val:
-                    print("Missing values ({}%) for '{}' is higher than {}%".format(val, name, variable['% missing']))
-                    return NOT_OK
+                allowed_missing_percent = variable["% missing"]
+
+            missing_timesteps = []
+
+            # Variables that are not scalars
+            if len(values.shape) > 0:
+                timesteps = range(values.shape[0])
+                if "missing_timesteps" in variable:
+                    allowed_missing_timesteps = variable["missing_timesteps"]
+                    if not isinstance(allowed_missing_timesteps, (list, tuple)):
+                        allowed_missing_timesteps = [allowed_missing_timesteps]
+                    timesteps = [t for t in timesteps if t not in allowed_missing_timesteps]
+                val = np.mean(np.isnan(values[timesteps, ...])) * 100
+
+            # Scalar variables
+            else:
+                val = np.mean(np.isnan(values)) * 100
+
+            if val > allowed_missing_percent:
+                print("Missing values ({}%) for '{}' is higher than {}%".format(val, name, variable['% missing']))
+                return NOT_OK
+
+            """
+            Check that values are within bounds
+            """
             if 'min' in variable:
                 val = np.min(values)
                 if variable['min'] > val:
                     print("Minimum value ({}) for '{}' is lower than {}".format(val, name, variable['min']))
                     return NOT_OK
+
             if 'max' in variable:
                 val = np.max(values)
                 if variable['max'] < np.max(values):
