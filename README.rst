@@ -27,3 +27,5 @@ Dimensions can be checked for an exact length (by using the work 'length') or a 
 lengths (inclusively, by using 'min_length' and 'max_length').
 
 'missing_timeteps' allows the specified timesteps to be missing.
+
+Neither 'dimensions' nor 'variables' are required to be present in the file.

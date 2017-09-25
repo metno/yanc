@@ -26,60 +26,62 @@ def check_nc_file_against_template(ncfile, template, debug):
 
     dataset = netCDF4.Dataset(ncfile, "r")
 
-    for dimension in check_params['dimensions']:
-        name = dimension['name']
-        if debug:
-            print("Parsing dimension '{}'".format(name))
-        if name not in dataset.dimensions.keys():
-            print("Dimension '{}' missing in the NetCDF file.".format(name))
-            return NOT_OK
-        val = len(dataset.dimensions[name])
-        if 'length' in dimension:
-            if val != dimension['length']:
-                print("Dimension length ({}) for  '{}' is not equal to {}".format(len(dataset.dimensions[name]), name, dimension['length']))
+    if 'dimensions' in check_params:
+       for dimension in check_params['dimensions']:
+           name = dimension['name']
+           if debug:
+               print("Parsing dimension '{}'".format(name))
+           if name not in dataset.dimensions.keys():
+               print("Dimension '{}' missing in the NetCDF file.".format(name))
+               return NOT_OK
+           val = len(dataset.dimensions[name])
+           if 'length' in dimension:
+               if val != dimension['length']:
+                   print("Dimension length ({}) for  '{}' is not equal to {}".format(len(dataset.dimensions[name]), name, dimension['length']))
+                   return NOT_OK
+           if 'min_length' in dimension:
+               if val < dimension['min_length']:
+                   print("Dimension length ({}) for  '{}' is less than {}".format(len(dataset.dimensions[name]), name, dimension['min_length']))
+                   return NOT_OK
+           if 'max_length' in dimension:
+               if val > dimension['max_length']:
+                   print("Dimension length ({}) for  '{}' is greater than {}".format(len(dataset.dimensions[name]), name, dimension['max_length']))
+                   return NOT_OK
+
+    if 'variables' in check_params:
+        for variable in check_params['variables']:
+            name = variable['name']
+            if debug:
+                print("Parsing variable '{}'".format(name))
+            """
+            Check variable metadata
+            """
+            if name not in dataset.variables.keys():
+                print("Variable '{}' missing in the NetCDF file.".format(name))
                 return NOT_OK
-        if 'min_length' in dimension:
-            if val < dimension['min_length']:
-                print("Dimension length ({}) for  '{}' is less than {}".format(len(dataset.dimensions[name]), name, dimension['min_length']))
-                return NOT_OK
-        if 'max_length' in dimension:
-            if val > dimension['max_length']:
-                print("Dimension length ({}) for  '{}' is greater than {}".format(len(dataset.dimensions[name]), name, dimension['max_length']))
+            if 'units' in variable and (not hasattr(dataset.variables[name], 'units') or variable['units'] != dataset.variables[name].units):
+                print("Variable '{}' missing 'units' attribute.".format(name))
                 return NOT_OK
 
-    for variable in check_params['variables']:
-        name = variable['name']
-        if debug:
-            print("Parsing variable '{}'".format(name))
-        """
-        Check variable metadata
-        """
-        if name not in dataset.variables.keys():
-            print("Variable '{}' missing in the NetCDF file.".format(name))
-            return NOT_OK
-        if 'units' in variable and (not hasattr(dataset.variables[name], 'units') or variable['units'] != dataset.variables[name].units):
-            print("Variable '{}' missing 'units' attribute.".format(name))
-            return NOT_OK
-
-        """
-        Check variable values
-        """
-        values = dataset.variables[name]
-        if '% missing' in variable:
-            val = np.mean(np.isnan(values)) * 100
-            if variable['% missing'] < val:
-                print("% missing values ({}) for '{}' is higher than {}".format(val, name, variable['% missing']))
-                return NOT_OK
-        if 'min' in variable:
-            val = np.min(values)
-            if variable['min'] > val:
-                print("Minimum value ({}) for '{}' is lower than {}".format(val, name, variable['min']))
-                return NOT_OK
-        if 'max' in variable:
-            val = np.max(values)
-            if variable['max'] < np.max(values):
-                print("Maximum value ({}) for '{}' is higher than {}".format(val, name, variable['max']))
-                return NOT_OK
+            """
+            Check variable values
+            """
+            values = dataset.variables[name]
+            if '% missing' in variable:
+                val = np.mean(np.isnan(values)) * 100
+                if variable['% missing'] < val:
+                    print("% missing values ({}) for '{}' is higher than {}".format(val, name, variable['% missing']))
+                    return NOT_OK
+            if 'min' in variable:
+                val = np.min(values)
+                if variable['min'] > val:
+                    print("Minimum value ({}) for '{}' is lower than {}".format(val, name, variable['min']))
+                    return NOT_OK
+            if 'max' in variable:
+                val = np.max(values)
+                if variable['max'] < np.max(values):
+                    print("Maximum value ({}) for '{}' is higher than {}".format(val, name, variable['max']))
+                    return NOT_OK
 
     return OK
 
