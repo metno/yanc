@@ -19,6 +19,7 @@ def check_nc_file_against_template(ncfile, template, debug):
             check_params = yaml.load(s)
         except yaml.YAMLError as e:
             print(e)
+            return NOT_OK
 
     try:
         dataset = netCDF4.Dataset(ncfile, "r")

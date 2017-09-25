@@ -28,6 +28,12 @@ lengths (inclusively, by using 'min_length' and 'max_length').
 
 Neither 'dimensions' nor 'variables' are required to be present in the file.
 
+Return codes
+------------
+The program returns 0 if the file is valid. Otherwise a non-zero code is returned. If the template
+file is missing or contains invalid YAML, or if the NetCDF file does not exist or is invalid NetCDF,
+then a non-zero code is returned.
+
 Missing values
 --------------
 
