@@ -20,11 +20,11 @@ def check_nc_file_against_template(ncfile, template, debug):
         except yaml.YAMLError as e:
             print(e)
 
-    if not os.path.exists(ncfile):
+    try:
+        dataset = netCDF4.Dataset(ncfile, "r")
+    except Exception:
         print("File '{}' is missing.".format(ncfile))
         return NOT_OK
-
-    dataset = netCDF4.Dataset(ncfile, "r")
 
     if 'dimensions' in check_params:
        for dimension in check_params['dimensions']:
@@ -71,9 +71,9 @@ def check_nc_file_against_template(ncfile, template, debug):
             values = dataset.variables[name]
 
             # Percent missing values
-            allowed_missing_percent = 0  # Default value
+            allowed_missing_percent = 0.0  # Default value
             if '% missing' in variable:
-                allowed_missing_percent = variable["% missing"]
+                allowed_missing_percent = float(variable["% missing"])
 
             missing_timesteps = []
 

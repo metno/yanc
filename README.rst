@@ -57,3 +57,11 @@ missing_timesteps can also be an array like this:
      units: m
      '% missing': 0
      missing_timesteps: [0, 1, 2]
+
+Example
+-------
+
+.. code-block:: bash
+
+   python yanc.py --ncfile http://thredds.met.no/thredds/dodsC/meps25files/meps_det_pp_2_5km_latest.nc \
+   --template templates/meps_det_pp.yml
