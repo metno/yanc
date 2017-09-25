@@ -3,17 +3,26 @@ import numpy as np
 import argparse
 import yaml
 import sys
+import os
 
 NOT_OK = 1
 OK = 0
 
 def check_nc_file_against_template(ncfile, template, debug):
 
+    if not os.path.exists(template):
+        print("File '{}' is missing.".format(template))
+        return NOT_OK
+
     with open(template, 'r') as s:
         try:
             check_params = yaml.load(s)
         except yaml.YAMLError as e:
             print(e)
+
+    if not os.path.exists(ncfile):
+        print("File '{}' is missing.".format(ncfile))
+        return NOT_OK
 
     dataset = netCDF4.Dataset(ncfile, "r")
 
@@ -22,7 +31,7 @@ def check_nc_file_against_template(ncfile, template, debug):
         if debug:
             print("Parsing dimension '{}'".format(name))
         if name not in dataset.dimensions.keys():
-            print("Variable '{}' missing in the NetCDF file.".format(name))
+            print("Dimension '{}' missing in the NetCDF file.".format(name))
             return NOT_OK
         val = len(dataset.dimensions[name])
         if 'length' in dimension:
@@ -48,8 +57,8 @@ def check_nc_file_against_template(ncfile, template, debug):
         if name not in dataset.variables.keys():
             print("Variable '{}' missing in the NetCDF file.".format(name))
             return NOT_OK
-        if 'unit' in variable and variable['unit'] != dataset.variables[name].units:
-            print("Variable '{}' missing in the NetCDF file.".format(name))
+        if 'units' in variable and (not hasattr(dataset.variables[name], 'units') or variable['units'] != dataset.variables[name].units):
+            print("Variable '{}' missing 'units' attribute.".format(name))
             return NOT_OK
 
         """
