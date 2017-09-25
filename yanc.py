@@ -7,7 +7,7 @@ import sys
 NOT_OK = 1
 OK = 0
 
-def check_nc_file_against_template(ncfile, template):
+def check_nc_file_against_template(ncfile, template, debug):
 
     with open(template, 'r') as s:
         try:
@@ -19,6 +19,8 @@ def check_nc_file_against_template(ncfile, template):
 
     for dimension in check_params['dimensions']:
         name = dimension['name']
+        if debug:
+            print("Parsing dimension '{}'".format(name))
         if name not in dataset.dimensions.keys():
             print("Variable '{}' missing in the NetCDF file.".format(name))
             return NOT_OK
@@ -38,6 +40,8 @@ def check_nc_file_against_template(ncfile, template):
 
     for variable in check_params['variables']:
         name = variable['name']
+        if debug:
+            print("Parsing variable '{}'".format(name))
         """
         Check variable metadata
         """
@@ -75,9 +79,10 @@ def run(args):
     parser = argparse.ArgumentParser(prog="yanc", description=helptext)
     parser.add_argument('--ncfile', required=True, help='Name of the input NetCDF file.')
     parser.add_argument('--template', required=True, help="Name of the file with parametrized checks.")
+    parser.add_argument('--debug', help="Show debug information", action="store_true")
     args = parser.parse_args(args)
 
-    return_code = check_nc_file_against_template(args.ncfile, args.template)
+    return_code = check_nc_file_against_template(args.ncfile, args.template, args.debug)
     sys.exit(return_code)
 
 def main():
