@@ -1,21 +1,25 @@
 Yet another NetCDF checker
 ==========================
 
-Installation
-------------
+This command-line program checks that a NetCDF file conforms to a pre-defined specification. It
+checks if the file contains the specified dimensions and variables; that the dimensions are of the
+correct size; that the variables have values within range; and that the variables have certain
+attributes.
 
-yanc requires NetCDF4, numpy, and pyyaml.
+Example use
+-----------
 
 .. code-block:: bash
-   sudo apt-get update
-   sudo apt-get install netcdf-bin libnetcdf-dev libhdf5-serial-dev
-   sudo apt-get install python-numpy
-   sudo pip install pyyaml
+
+   python yanc.py\
+      --ncfile http://thredds.met.no/thredds/dodsC/meps25files/meps_det_pp_2_5km_latest.nc \
+      --template templates/meps_det_pp.yml
 
 Template
 --------
 
-The template file understands the following keywords:
+Yanc checks the NetCDF file against specifications in a template file. The template understands the
+following structure:
 
 .. code-block:: bash
 
@@ -34,10 +38,22 @@ The template file understands the following keywords:
      '% missing': 10
      missing_timesteps: [0,1,2]
 
-Dimensions can be checked for an exact length (by using the work 'length') or a range of
+All attributes are optional, and yanc will not check dimensions/variables/min/max/etc when not
+specified. Dimensions can be checked for an exact length (by using the work 'length') or a range of
 lengths (inclusively, by using 'min_length' and 'max_length').
 
 Neither 'dimensions' nor 'variables' are required to be present in the file.
+
+Installation
+------------
+
+yanc requires NetCDF4, numpy, and pyyaml.
+
+.. code-block:: bash
+   sudo apt-get update
+   sudo apt-get install netcdf-bin libnetcdf-dev libhdf5-serial-dev
+   sudo apt-get install python-numpy
+   sudo pip install pyyaml
 
 Return codes
 ------------
@@ -74,11 +90,3 @@ missing_timesteps can also be an array like this:
      units: m
      '% missing': 0
      missing_timesteps: [0, 1, 2]
-
-Example
--------
-
-.. code-block:: bash
-
-   python yanc.py --ncfile http://thredds.met.no/thredds/dodsC/meps25files/meps_det_pp_2_5km_latest.nc \
-   --template templates/meps_det_pp.yml
