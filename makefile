@@ -1,3 +1,2 @@
 test:
-	nosetests
-	# nosetests3
+	python tests/test.py
