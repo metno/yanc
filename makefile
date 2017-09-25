@@ -1,0 +1,3 @@
+test:
+	nosetests
+	# nosetests3
