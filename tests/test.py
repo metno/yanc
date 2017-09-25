@@ -8,11 +8,19 @@ class CommandLineTest(unittest.TestCase):
       """
       Wrapper function for testing if a command-line input fails. The test fails if the command does
       not throw an error.
+
+      Check also that adding --debug works.
       """
       with self.assertRaises(SystemExit) as cm:
          yanc.run(cmd.split(' '))
       if cm.exception.code == 0:
          print("This command did not fail: '{}'".format(cmd))
+      self.assertTrue(cm.exception.code != 0)
+
+      with self.assertRaises(SystemExit) as cm:
+         yanc.run(cmd.split(' ') + ['--debug'])
+      if cm.exception.code == 0:
+         print("This command did not fail: '{}'".format(cmd + ' --debug'))
       self.assertTrue(cm.exception.code != 0)
 
    def assertValid(self, cmd):
@@ -24,6 +32,12 @@ class CommandLineTest(unittest.TestCase):
          yanc.run(cmd.split(' '))
       if cm.exception.code != 0:
          print("This command failed: '{}'".format(cmd))
+      self.assertTrue(cm.exception.code == 0)
+
+      with self.assertRaises(SystemExit) as cm:
+         yanc.run(cmd.split(' ') + ["--debug"])
+      if cm.exception.code != 0:
+         print("This command failed: '{}'".format(cmd + ' --debug'))
       self.assertTrue(cm.exception.code == 0)
 
    def test_no_ncfile(self):
