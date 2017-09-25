@@ -1,0 +1,4 @@
+variables:
+- name: precipitation_amount
+  '% missing': 0
+  missing_timesteps: 0

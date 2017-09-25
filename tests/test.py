@@ -58,6 +58,14 @@ class CommandLineTest(unittest.TestCase):
       for template in templates:
          self.assertError('--template {} --ncfile tests/sample.nc'.format(template))
 
+   def test_valid_auto(self):
+      """
+      Checks that the sample file conforms to all templates in the tests/valid folder
+      """
+      templates = glob.glob("tests/valid/*.yml")
+      for template in templates:
+         self.assertValid('--template {} --ncfile tests/sample.nc'.format(template))
+
    def test_valid(self):
       self.assertValid('--template tests/template.yml --ncfile tests/sample.nc')
 

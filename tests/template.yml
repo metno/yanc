@@ -7,15 +7,20 @@ dimensions:
   min_length: 2
 
 variables:
-- '% missing': 0
-  missing_timesteps: [0,1,2]
-  name: time
+- name: time
   units: seconds since 1970-01-01 00:00:00 +00:00
-- '% missing': 0
-  name: forecast_reference_time
+  '% missing': 0
+- name: forecast_reference_time
   units: seconds since 1970-01-01 00:00:00 +00:00
-- '% missing': 0
+  '% missing': 0
+- name: air_temperature_2m
   max: 400
   min: 200
-  name: air_temperature_2m
   units: K
+  '% missing': 0
+- name: precipitation_amount
+  max: 1000
+  min: 0
+  units: mm
+  '% missing': 0
+  missing_timesteps: 0
