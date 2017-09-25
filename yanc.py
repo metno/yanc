@@ -8,6 +8,7 @@ import os
 NOT_OK = 1
 OK = 0
 
+
 def check_nc_file_against_template(ncfile, template, debug):
 
     if not os.path.exists(template):
@@ -113,6 +114,7 @@ def check_nc_file_against_template(ncfile, template, debug):
 
     return OK
 
+
 def run(args):
     helptext = "Check a NetCDF file against a template specifying variables and their properties."
     parser = argparse.ArgumentParser(prog="yanc", description=helptext)
@@ -123,6 +125,7 @@ def run(args):
 
     return_code = check_nc_file_against_template(args.ncfile, args.template, args.debug)
     sys.exit(return_code)
+
 
 def main():
    run(sys.argv[1:])

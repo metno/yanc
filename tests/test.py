@@ -2,6 +2,7 @@ import unittest
 import yanc
 import glob
 
+
 class CommandLineTest(unittest.TestCase):
    def assertError(self, cmd):
       """
@@ -48,7 +49,6 @@ class CommandLineTest(unittest.TestCase):
       Template file does not exist
       """
       self.assertError('--template tests/template_missing.yml --ncfile tests/sample.nc')
-
 
    def test_invalid_auto(self):
       """
