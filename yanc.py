@@ -77,6 +77,12 @@ def check_nc_file_against_template(ncfile, template, debug):
             if '% missing' in variable:
                 allowed_missing_percent = float(variable["% missing"])
 
+            # Bypass the checks on the values if possible, to save time
+            if allowed_missing_percent == 100 and 'min' not in variable and 'max' not in variable:
+                if debug:
+                    print("Bypassing reading of values for '{}'".format(name))
+                continue
+
             missing_timesteps = []
 
             # Variables that are not scalars
