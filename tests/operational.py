@@ -30,15 +30,15 @@ class OperationalTest(unittest.TestCase):
 
    def test_meps_det_pp(self):
       filename = self.get_current_file("member_0/meps_mbr0_pp_2_5km")
-      self.assertValid('--template templates/meps_det_pp.yml --ncfile {}'.format(filename))
+      self.assertValid('--template templates/meps_det_pp_2_5km.yml --ncfile {}'.format(filename))
 
    def test_meps_det_extracted(self):
       filename = self.get_current_file("member_0/meps_mbr0_extracted_2_5km")
-      self.assertValid('--template templates/meps_det_extracted.yml --ncfile {}'.format(filename))
+      self.assertValid('--template templates/meps_det_extracted_2_5km.yml --ncfile {}'.format(filename))
 
    def test_meps_allmembers_extracted(self):
-      filename = self.get_current_file("meps_extracted_2_5km")
-      self.assertValid('--template templates/meps_allmembers_extracted.yml --ncfile {}'.format(filename))
+      filename = self.get_current_file("meps_full_2_5km")
+      self.assertValid('--template templates/meps_allmembers_extracted_2_5km.yml --ncfile {}'.format(filename))
 
 if __name__ == '__main__':
    unittest.main()

@@ -13,7 +13,7 @@ Example use
 
    python yanc.py\
       --ncfile http://thredds.met.no/thredds/dodsC/meps25files/meps_det_pp_2_5km_latest.nc \
-      --template templates/meps_det_pp.yml
+      --template templates/meps_det_pp_2_5km.yml
 
 Template
 --------

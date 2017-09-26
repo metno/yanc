@@ -1,0 +1,68 @@
+dimensions:
+- name: time
+  length: 67
+- name: x
+- name: y
+
+variables:
+- name: time
+  units: seconds since 1970-01-01 00:00:00 +00:00
+
+- name: forecast_reference_time
+  units: seconds since 1970-01-01 00:00:00 +00:00
+
+- name: x
+  units: m
+
+- name: y
+  units: m
+
+- name: longitude
+  units: degree_east
+
+- name: latitude
+  units: degree_north
+
+- name: projection_lambert 
+
+- name: surface_geopotential
+  max: 40000
+  min: -2000
+  units: m^2/s^2
+
+- name: integral_of_surface_net_downward_shortwave_flux_wrt_time
+  units: W s/m^2
+
+- name: surface_air_pressure
+  min: 50000
+  max: 120000
+  units: Pa
+
+- name: air_temperature_2m
+  max: 400
+  min: 200
+  units: K
+
+- name: relative_humidity_2m
+  max: 1.5
+  min: -0.1
+  units: '1'
+
+- name: x_wind_10m
+  max: 100
+  min: -100
+  units: m/s
+
+- name: y_wind_10m
+  max: 100
+  min: -100
+  units: m/s
+
+- name: precipitation_amount_acc
+  max: 1000
+  min: -0.1 
+  units: kg/m^2
+
+
+
+

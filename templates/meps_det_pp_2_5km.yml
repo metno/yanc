@@ -1,0 +1,141 @@
+dimensions:
+- name: time
+  length: 67
+- name: x
+- name: y
+
+variables:
+- name: time
+  units: seconds since 1970-01-01 00:00:00 +00:00
+
+- name: forecast_reference_time
+  units: seconds since 1970-01-01 00:00:00 +00:00
+
+- name: x
+  units: m
+
+- name: y
+  units: m
+
+- name: longitude
+  units: degree_east
+
+- name: latitude
+  units: degree_north
+
+- name: surface_air_pressure
+  min: 50000
+  max: 120000
+  units: Pa
+
+- name: relative_humidity_2m
+  max: 1.5
+  min: -0.1
+  units: '1'
+
+- name: air_pressure_at_sea_level
+  max: 120000
+  min: 60000
+  units: 'Pa'
+
+- name: precipitation_amount_acc
+  max: 1000
+  min: -0.1 
+  units: kg/m^2
+
+- name: fog_area_fraction
+  max: 1.0
+  min: 0.0
+  units: '1'
+
+- name: land_area_fraction
+  max: 1.0
+  min: 0.0
+  units: '1'
+
+- name: precipitation_amount
+  max: 1000
+  min: -0.1
+  units: kg/m^2
+  missing_timesteps: 0
+
+- name: precipitation_amount_high_estimate
+  max: 1000
+  min: 0.0
+  units: kg/m^2
+  missing_timesteps: 0
+
+- name: precipitation_amount_low_estimate
+  max: 1000
+  min: 0.0
+  units: kg/m^2
+  missing_timesteps: 0
+
+- name: precipitation_amount_middle_estimate
+  max: 1000
+  min: 0.0
+  units: kg/m^2
+  missing_timesteps: 0
+
+- name: precipitation_amount_prob_low
+  max: 1.0
+  min: 0.0
+  units: '1'
+  missing_timesteps: 0
+
+- name: cloud_area_fraction
+  max: 100.0
+  min: 0.0
+  units: '%'
+
+- name: high_type_cloud_area_fraction
+  max: 100.0
+  min: 0.0
+  units: '%'
+
+- name: low_type_cloud_area_fraction
+  max: 100.0
+  min: 0.0
+  units: '%'
+
+- name: medium_type_cloud_area_fraction
+  max: 100.0
+  min: 0.0
+  units: '%'
+
+- name: thunderstorm_index_combined
+  max: 1
+  min: 0
+  units: '1'
+
+- name: wind_speed_maxarea_10m
+  max: 100
+  min: 0
+  units: m/s
+
+- name: wind_speed_of_gust
+  max: 100
+  min: 0 
+  units: m/s
+
+- name: x_wind_10m
+  max: 100
+  min: -100
+  units: m/s
+
+- name: y_wind_10m
+  max: 100
+  min: -100
+  units: m/s
+
+- name: air_temperature_2m
+  max: 400
+  min: 200
+  units: K
+
+- name: altitude
+  max: 3000
+  min: -100
+  units: m
+
+
