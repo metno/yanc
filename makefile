@@ -1,3 +1,7 @@
+simple:
+	python tests/test.py
+	python3 tests/test.py
+
 test:
 	nosetests
 	nosetests3
