@@ -107,14 +107,14 @@ def check_nc_file_against_template(ncfile, template, debug):
             Check that values are within bounds
             """
             if 'min' in variable:
-                val = np.min(values)
+                val = np.nanmin(values)
                 if variable['min'] > val:
                     print("Minimum value ({}) for '{}' is lower than {}".format(val, name, variable['min']))
                     return NOT_OK
 
             if 'max' in variable:
-                val = np.max(values)
-                if variable['max'] < np.max(values):
+                val = np.nanmax(values)
+                if variable['max'] < val:
                     print("Maximum value ({}) for '{}' is higher than {}".format(val, name, variable['max']))
                     return NOT_OK
 
