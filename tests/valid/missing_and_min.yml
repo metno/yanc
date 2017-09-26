@@ -1,0 +1,5 @@
+variables:
+- name: precipitation_amount
+  '% missing': 4
+  min: 0
+  max: 1000

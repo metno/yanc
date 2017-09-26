@@ -1,4 +1,4 @@
 variables:
 - name: random
   '% missing': 0
-  missing_timesteps: [0, 2]
+  missing_timesteps: [0,4]

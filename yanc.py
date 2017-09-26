@@ -93,27 +93,30 @@ def check_nc_file_against_template(ncfile, template, debug):
                     if not isinstance(allowed_missing_timesteps, (list, tuple)):
                         allowed_missing_timesteps = [allowed_missing_timesteps]
                     timesteps = [t for t in timesteps if t not in allowed_missing_timesteps]
-                val = np.mean(np.isnan(values[timesteps, ...])) * 100
+                num_valid = np.ma.count(values[timesteps, ...])
+                num_total = np.product(values[timesteps, ...].shape)
+                val = (num_total - num_valid) / 1.0 / num_total * 100
 
             # Scalar variables
             else:
-                val = np.isnan(values[:]) * 100
+                val = (np.ma.count(values[:]) == 0) * 100
 
             if val > allowed_missing_percent:
                 print("Missing values ({}%) for '{}' is higher than {}%".format(val, name, allowed_missing_percent))
                 return NOT_OK
 
             """
-            Check that values are within bounds
+            Check that values are within bounds. Here we ignore the missing values, since we only
+            used the non-masked part.
             """
             if 'min' in variable:
-                val = np.nanmin(values)
+                val = np.min(values[:])
                 if variable['min'] > val:
                     print("Minimum value ({}) for '{}' is lower than {}".format(val, name, variable['min']))
                     return NOT_OK
 
             if 'max' in variable:
-                val = np.nanmax(values)
+                val = np.max(values[:])
                 if variable['max'] < val:
                     print("Maximum value ({}) for '{}' is higher than {}".format(val, name, variable['max']))
                     return NOT_OK
