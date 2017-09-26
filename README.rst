@@ -94,5 +94,5 @@ missing_timesteps can also be an array like this:
 Testing
 -------
 
-Running "make test" runs both simple unittests and checks that the current operational files conform
-to specifications. This can take 10-15 minutes. Running "make simple" only runs the quicker unittests.
+Running "make test" runs some quick unittests. Running "make testop" checks that the current
+operational files conform to specifications. This can take 10-15 minutes.

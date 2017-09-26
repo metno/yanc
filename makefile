@@ -1,10 +1,9 @@
-simple:
-	python tests/test.py
-	python3 tests/test.py
-
 test:
 	nosetests
 	nosetests3
+
+testop:
+	python tests/operational.py
 
 coverage:
 	nosetests --with-coverage --cover-erase --cover-package=yanc --cover-html
