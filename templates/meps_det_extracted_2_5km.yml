@@ -23,7 +23,8 @@ variables:
 - name: latitude
   units: degree_north
 
-- name: projection_lambert 
+- name: projection_lambert
+  '% missing': 100
 
 - name: surface_geopotential
   max: 40000
@@ -60,9 +61,5 @@ variables:
 
 - name: precipitation_amount_acc
   max: 1000
-  min: -0.1 
+  min: -0.1
   units: kg/m^2
-
-
-
-
