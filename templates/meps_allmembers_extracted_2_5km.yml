@@ -3,7 +3,7 @@ dimensions:
   length: 67
 - name: x
 - name: y
-- name: ensemble_member 
+- name: ensemble_member
 
 variables:
 - name: time
@@ -24,12 +24,10 @@ variables:
 - name: latitude
   units: degree_north
 
-- name: projection_lambert 
+- name: projection_lambert
   '% missing': 100
 
 - name: surface_geopotential
-  max: 40000
-  min: -2000
   units: m^2/s^2
   '% missing': 100
 
@@ -38,40 +36,25 @@ variables:
   '% missing': 100
 
 - name: surface_air_pressure
-  min: 50000
-  max: 120000
   units: Pa
   '% missing': 100
 
 - name: air_temperature_2m
-  max: 400
-  min: 200
   units: K
   '% missing': 100
 
 - name: relative_humidity_2m
-  max: 1.5
-  min: -0.1
   units: '1'
   '% missing': 100
 
 - name: x_wind_10m
-  max: 100
-  min: -100
   units: m/s
   '% missing': 100
 
 - name: y_wind_10m
-  max: 100
-  min: -100
   units: m/s
   '% missing': 100
 
 - name: precipitation_amount_acc
-  max: 1000
-  min: -0.1 
   units: kg/m^2
   '% missing': 100
-
-
-
