@@ -25,7 +25,6 @@ class OperationalTest(unittest.TestCase):
       hour = '00'
       basedir = "/lustre/storeB/project/metproduction/products/meps"
       filename = "{}/{}_{}T{}Z.nc".format(basedir, tag, date, hour)
-      print filename
       return filename
 
    def test_meps_det_pp(self):
