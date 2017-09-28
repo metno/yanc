@@ -50,6 +50,7 @@ Installation
 yanc requires NetCDF4, numpy, and pyyaml.
 
 .. code-block:: bash
+
    sudo apt-get update
    sudo apt-get install netcdf-bin libnetcdf-dev libhdf5-serial-dev
    sudo apt-get install python-numpy
