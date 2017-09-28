@@ -3,13 +3,13 @@ test:
 	nosetests3
 
 testop:
-	python tests/operational.py
+	python yanc/tests/operational.py
 
 coverage:
 	nosetests --with-coverage --cover-erase --cover-package=yanc --cover-html
 
 lint:
-	python tests/pep8_test.py
+	python yanc/tests/pep8_test.py
 
 count:
 	@wc -l *.py */*.py */*.yml */*/*.yml | tail -1

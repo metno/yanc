@@ -44,44 +44,44 @@ class CommandLineTest(unittest.TestCase):
       """
       No NetCDF provided on the command-line
       """
-      self.assertError('--template tests/template.yml')
+      self.assertError('--template yanc/tests/template.yml')
 
    def test_no_template(self):
       """
       No templte file provided on the command-line
       """
-      self.assertError('--ncfile tests/sample.nc')
+      self.assertError('--ncfile yanc/tests/sample.nc')
 
    def test_missing_ncfile(self):
       """
       NetCDF file does not exist
       """
-      self.assertError('--template tests/template.yml --ncfile tests/sample_missing.nc')
+      self.assertError('--template yanc/tests/template.yml --ncfile yanc/tests/sample_missing.nc')
 
    def test_missing_template(self):
       """
       Template file does not exist
       """
-      self.assertError('--template tests/template_missing.yml --ncfile tests/sample.nc')
+      self.assertError('--template yanc/tests/template_missing.yml --ncfile yanc/tests/sample.nc')
 
    def test_invalid_auto(self):
       """
-      Checks that the sample file fails to conform to all templates in the tests/invalid folder
+      Checks that the sample file fails to conform to all templates in the yanc/tests/invalid folder
       """
-      templates = glob.glob("tests/invalid/*.yml")
+      templates = glob.glob("yanc/tests/invalid/*.yml")
       for template in templates:
-         self.assertError('--template {} --ncfile tests/sample.nc'.format(template))
+         self.assertError('--template {} --ncfile yanc/tests/sample.nc'.format(template))
 
    def test_valid_auto(self):
       """
-      Checks that the sample file conforms to all templates in the tests/valid folder
+      Checks that the sample file conforms to all templates in the yanc/tests/valid folder
       """
-      templates = glob.glob("tests/valid/*.yml")
+      templates = glob.glob("yanc/tests/valid/*.yml")
       for template in templates:
-         self.assertValid('--template {} --ncfile tests/sample.nc'.format(template))
+         self.assertValid('--template {} --ncfile yanc/tests/sample.nc'.format(template))
 
    def test_valid(self):
-      self.assertValid('--template tests/template.yml --ncfile tests/sample.nc')
+      self.assertValid('--template yanc/tests/template.yml --ncfile yanc/tests/sample.nc')
 
 
 if __name__ == '__main__':

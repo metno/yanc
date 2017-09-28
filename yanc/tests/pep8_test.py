@@ -6,7 +6,7 @@ import pep8
 import warnings
 
 # ignore stuff in virtualenvs or version control directories
-ignore_patterns = ('.svn', 'bin', 'lib' + os.sep + 'python', 'tests/devel', 'devel')
+ignore_patterns = ('.svn', 'bin', 'lib' + os.sep + 'python', 'yanc/tests/devel', 'devel')
 
 
 def ignore(dir):
