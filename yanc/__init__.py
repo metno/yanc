@@ -61,14 +61,15 @@ def check_nc_file_against_template(ncfile, template, debug):
             if name not in dataset.variables.keys():
                 print("Variable '{}' missing in the NetCDF file.".format(name))
                 return NOT_OK
-            if 'units' in variable and (not hasattr(dataset.variables[name], 'units')):
-                print("Variable '{}' missing 'units' attribute.".format(name))
-                return NOT_OK
-            if variable['units'] != dataset.variables[name].units:
-                print(("Wrong units of the '{}' variable.").format(name))
-                print("Expected: '{}'".format(variable['units']))
-                print("Found:    '{}'".format(dataset.variables[name].units))
-                return NOT_OK
+            if 'units' in variable:
+                if not hasattr(dataset.variables[name], 'units'):
+                    print("Variable '{}' missing 'units' attribute.".format(name))
+                    return NOT_OK
+                if variable['units'] != dataset.variables[name].units:
+                    print(("Wrong units of the '{}' variable.").format(name))
+                    print("Expected: '{}'".format(variable['units']))
+                    print("Found:    '{}'".format(dataset.variables[name].units))
+                    return NOT_OK
 
             """
             Check missing values
