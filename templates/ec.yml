@@ -1,0 +1,92 @@
+dimensions:
+- name: time
+  length: 65
+
+- name: surface
+  length: 1
+- name: pressure
+  length: 15
+- name: depth_between_layers
+  length: 1
+- name: hybrid
+  length: 49
+- name: longitude
+  length: 3600
+- name: latitude
+  length: 1801
+- name: longitude1
+  length: 3600
+- name: latitude1
+  length: 1801
+
+variables:
+- name: time
+  units: seconds since 1970-01-01 00:00:00 +0000
+
+- name: forecast_reference_time
+  units: seconds since 1970-01-01 00:00:00 +00:00
+
+- name: surface
+  units: m
+
+- name: pressure
+  units: hPa
+
+- name: depth_between_layers
+  units: cm
+
+- name: hybrid
+
+- name: p0
+  units: Pa
+
+- name: ap
+  units: Pa
+
+- name: b
+  units: '1'
+
+- name: projection_regular_ll
+  '% missing': 100
+
+- name: longitude
+  units: degrees_east
+
+- name: latitude
+  units: degrees_north
+
+- name: longitude1
+  units: degrees_east
+
+- name: latitude1
+  units: degrees_north
+
+- name: air_temperature_ml
+  units: K
+  min: 0
+  max: 400
+
+- name: y_wind_ml
+  units: m/s
+
+- name: x_wind_ml
+  units: m/s
+
+- name: specific_humidity_ml
+  units: kg/kg
+
+- name: omega_ml
+  units: Pa/s
+
+- name: mass_fraction_of_cloud_liquid_water_in_air_ml
+  units: kg/kg
+
+- name: surface_air_pressure
+  min: 40000
+  max: 120000
+  units: Pa
+
+- name: x_wind_10m
+  min: -100
+  max: 100
+  units: m/s
