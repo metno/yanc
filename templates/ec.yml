@@ -1,22 +1,13 @@
 dimensions:
 - name: time
   length: 65
-
 - name: surface
   length: 1
-- name: pressure
-  length: 15
 - name: depth_between_layers
   length: 1
-- name: hybrid
-  length: 49
 - name: longitude
   length: 3600
 - name: latitude
-  length: 1801
-- name: longitude1
-  length: 3600
-- name: latitude1
   length: 1801
 
 variables:
@@ -29,25 +20,11 @@ variables:
 - name: surface
   units: m
 
-- name: pressure
-  units: hPa
-
 - name: depth_between_layers
   units: cm
 
-- name: hybrid
-
-- name: p0
-  units: Pa
-
-- name: ap
-  units: Pa
-
-- name: b
-  units: '1'
-
 - name: projection_regular_ll
-  '% missing': 100
+#  '% missing': 100
 
 - name: longitude
   units: degrees_east
@@ -55,38 +32,54 @@ variables:
 - name: latitude
   units: degrees_north
 
-- name: longitude1
-  units: degrees_east
-
-- name: latitude1
-  units: degrees_north
-
-- name: air_temperature_ml
-  units: K
-  min: 0
-  max: 400
-
-- name: y_wind_ml
-  units: m/s
-
-- name: x_wind_ml
-  units: m/s
-
-- name: specific_humidity_ml
-  units: kg/kg
-
-- name: omega_ml
-  units: Pa/s
-
-- name: mass_fraction_of_cloud_liquid_water_in_air_ml
-  units: kg/kg
-
 - name: surface_air_pressure
-  min: 40000
-  max: 120000
+  #  min: 40000
+  #max: 120000
   units: Pa
 
 - name: x_wind_10m
-  min: -100
-  max: 100
+  #min: -100
+  #max: 100
   units: m/s
+
+- name: y_wind_10m
+  #min: -100
+  #max: 100
+  units: m/s
+
+- name: atmosphere_mass_content_of_water_vapor
+- name: air_pressure_at_sea_level
+- name: medium_type_cloud_area_fraction
+- name: surface_geopotential
+- name: surface_air_pressure
+- name: volume_fraction_of_condensed_water_in_soil_sl1
+- name: low_type_cloud_area_fraction
+- name: high_type_cloud_area_fraction
+- name: dew_point_temperature_2m
+- name: surface_temperature
+- name: x_wind_10m
+- name: lwe_thickness_of_surface_snow_amount
+- name: sea_surface_temperature
+- name: air_temperature_2m
+- name: sea_ice_area_fraction
+- name: cloud_area_fraction
+- name: lwe_thickness_of_convective_precipitation_amount_acc
+- name: surface_upward_latent_heat_flux_acc
+- name: integral_of_surface_downwelling_longwave_flux_in_air_wrt_time
+- name: precipitation_amount_acc
+- name: integral_of_surface_downwelling_shortwave_flux_in_air_wrt_time
+- name: freezing_level_altitude
+- name: lwe_thickness_of_snowfall_amount_acc
+- name: lwe_thickness_of_stratiform_precipitation_amount_acc
+- name: northward_surface_stress
+- name: atmosphere_mass_content_of_cloud_liquid_water
+#- name: wind_speed_of_gust_10m_max3h
+- name: specific_convective_available_potential_energy
+#- name: surface_upward_sensible_heat_flux_acc
+- name: eastward_surface_stress
+- name: visibility_in_air
+- name: integral_of_surface_net_downward_shortwave_flux_wrt_time
+#- name: lwe_thickness_of_freezing_rain_amount_acc_pending_name_change
+- name: air_temperature_2m_max6h
+- name: air_temperature_2m_min6h
+
