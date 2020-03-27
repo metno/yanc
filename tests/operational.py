@@ -1,7 +1,5 @@
 import unittest
 import yanc
-import glob
-import datetime
 import time
 
 
