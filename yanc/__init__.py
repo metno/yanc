@@ -17,7 +17,7 @@ def check_nc_file_against_template(ncfile, template, debug):
 
     with open(template, 'r') as s:
         try:
-            check_params = yaml.load(s)
+            check_params = yaml.safe_load(s)
         except yaml.YAMLError as e:
             print(e)
             return NOT_OK
