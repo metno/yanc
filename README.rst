@@ -47,16 +47,18 @@ Neither 'dimensions' nor 'variables' are required to be present in the file.
 Installation
 ------------
 
-yanc requires NetCDF4, numpy, and pyyaml.
+The easiest way to install yanc is using pip:
 
 .. code-block:: bash
 
-   sudo apt-get update
-   sudo apt-get install netcdf-bin libnetcdf-dev libhdf5-serial-dev
-   sudo apt-get install python-numpy
+   pip install metyanc
 
-   sudo pip install -r requirements.txt 
-   sudo python setup.py install
+To install from source, install like this:
+
+.. code-block:: bash
+
+   pip install -r requirements.txt 
+   python setup.py install
 
 Return codes
 ------------
