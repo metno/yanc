@@ -13,3 +13,6 @@ lint:
 
 count:
 	@wc -l *.py */*.py */*.yml */*/*.yml | tail -1
+
+sdist:
+	python setup.py sdist
