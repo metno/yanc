@@ -1,10 +1,10 @@
 .PHONY: dist test
 
-dist:
-	# This produces distributions for pypi. The are placed in dist
-	python setup.py sdist
-	python setup.py bdist_wheel
-	@ echo "Run 'twine upload dist/* --verbose'"
+# Don't run this, since the github pipeline will do this automatically
+# dist:
+#	python setup.py sdist
+#	python setup.py bdist_wheel
+#	@ echo "Run 'twine upload dist/* --verbose'"
 
 test:
 	coverage run --source yanc -m unittest discover
