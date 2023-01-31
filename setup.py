@@ -5,21 +5,36 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path
+import os
+import io
+
+def read(fname):
+    file_path = os.path.join(os.path.dirname(__file__), fname)
+    return io.open(file_path, encoding="utf-8").read()
+
 
 here = path.abspath(path.dirname(__file__))
-exec(open('yanc/version.py').read())
+package_name = 'metyanc'
+
+version = None
+init_py = os.path.join("yanc".replace("-", "_"), "__init__.py")
+for line in read(init_py).split("\n"):
+    if line.startswith("__version__"):
+        version = line.split("=")[-1].strip()[1:-1]
+assert version
+
 
 # Get the long description from the relevant file
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='metyanc',
+    name=package_name,
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version=__version__,
+    version=version,
 
     description='Yet another NetCDF checker',
     long_description=long_description,
